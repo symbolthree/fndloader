@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
++================================================
+|  FNDLOADER build Script
+|  $Header: /TOOL/FNDLOADER_V4/build.xml 1     11/14/16 1:30a Christopher Ho $
++================================================
+-->
+<project name="FNDLOADER" default="buildEXE" basedir=".">
+    <tstamp/>
+    <property name="launch4j.dir" location="D:\WORK\launch4j-3.50" />
+    <taskdef name="launch4j"
+             classname="net.sf.launch4j.ant.Launch4jTask"
+             classpath="${launch4j.dir}/launch4j.jar:${launch4j.dir}/lib/xstream.jar"
+    />
+
+  <target name="init">
+    <propertyfile file="build.properties">
+      <entry key="build.version" type="string" value="4.2"/>
+      <entry key="build.number" type="int" operation="+" default="0"/>
+      <entry key="build.time" type="date" value="now"/>
+      <entry key="build.product" type="string" value="FNDLOADER"/>
+    </propertyfile>
+    <property file="build.properties"/>
+    <property name="outputArchive" value="setup\FNDLOADER_${build.version}-build${build.number}.zip"/>
+    <property name="outputDir" value="FNDLOADER_${build.version}"/>
+    <delete dir="${outputDir}"/>
+    <delete file="${outputArchive}"/>
+    <mkdir dir="setup"/>
+    <mkdir dir="${outputDir}\classes"/>
+    <mkdir dir="${outputDir}\src"/>
+    <mkdir dir="${outputDir}\lib"/>
+    <mkdir dir="${outputDir}\doc"/>
+  </target>
+
+  <target name="build" depends="init">
+    <copy todir="${outputDir}\src">
+      <fileset dir="src" excludes="**/*.scc, **/*Test*.*"/>
+    </copy>
+    <javac encoding="UTF-8" 
+           srcdir="${outputDir}\src" 
+           destdir="${outputDir}\classes"
+           classpath="lib\CALLA-1.3.jar;
+                      lib\commons-io-2.5.jar;
+                      lib\jaxen-1.1.6.jar;
+                      lib\jdom-2.0.6.jar;
+                      lib\collections.zip;
+                      lib\fndext.jar;
+                      lib\ojdbc6.jar;
+                      lib\mdsdt.jar;
+                      lib\mdsrt.jar;
+                      lib\netcfg.jar;
+                      lib\oamdsdt.jar;
+                      lib\xdo.zip;
+                      lib\log4j-api-2.7.jar;
+                      lib\log4j-core-2.7.jar;
+                      lib\jna-4.2.2.jar;
+                      lib\jna-platform-4.2.2.jar"
+           source="1.8"
+           target="1.8"
+           debug="on"/>
+    <copy file="build.properties" todir="${outputDir}\classes"/>
+    <copy file="${outputDir}\src\symbolthree\oracle\fndload\icon.gif" todir="${outputDir}\classes\symbolthree\oracle\fndload"/>
+    <jar destfile = "${outputDir}\lib\FNDLOADER-${build.version}.jar"
+         basedir  = "${outputDir}\classes"
+         includes = "symbolthree/oracle/**,build.properties">
+      <manifest>
+        <section name="symbolthree/oracle/fndload">
+          <attribute name="Specification-Title" value="FNDLOADER"/>
+          <attribute name="Specification-Version" value="${build.version}-build${build.number}"/>
+          <attribute name="Specification-Vendor" value="symbolthree.com"/>
+          <attribute name="build-time" value="${DSTAMP} ${TSTAMP}"/>
+        </section>
+      </manifest>
+    </jar>
+    <!-- ZIP SOURCE FILES -->
+	<!--
+    <zip destfile="${outputDir}\FNDLOADER-${build.version}-build${build.number}_src.zip"
+       basedir="${outputDir}\src"
+       includes="**\**"/>
+	-->   
+  </target>
+
+  <target name="zip" depends="build">
+    <copy file="build_template\FNDLOADER.bat" todir="${outputDir}"/>
+    <replace file="${outputDir}\FNDLOADER.bat" token="@build.version@" value="${build.version}"/>
+
+    <copy file="build_template\FNDLOADER_CONSOLE.bat" todir="${outputDir}"/>
+    <replace file="${outputDir}\FNDLOADER_CONSOLE.bat" token="@build.version@" value="${build.version}"/>
+
+    <copy todir="${outputDir}\doc">
+      <fileset dir="doc" includes="**/*.chm"/>
+    </copy>
+<!--
+    <copy file="build_template\README" todir="${outputDir}"/>
+    <copy file="build_template\GPL.txt" todir="${outputDir}"/>
+    <copy file="build_template\LICENSE.txt" todir="${outputDir}"/>
+    <copy file="build_template\LICENSE_3RD_PARTY.txt" todir="${outputDir}"/>
+-->    
+    <copy file="build_template\flower.properties" tofile="${outputDir}\flower.properties"/>
+    <copy file="build_template\FNDLOADER.xml" tofile="${outputDir}\FNDLOADER.xml"/>
+    <copy file="build_template\FNDLOADER.dtd" tofile="${outputDir}\FNDLOADER.dtd"/>
+    <copy file="build_template\splash.gif" tofile="${outputDir}\splash.gif"/>
+    <copy file="build_template\log4j2.xml" tofile="${outputDir}\lib\log4j2.xml"/>
+	  <copy file="lib\CALLA-1.3.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\commons-io-2.5.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\jaxen-1.1.6.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\jdom-2.0.6.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\javatools-nodeps.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\collections.zip" todir="${outputDir}\lib"/>
+	  <copy file="lib\fndext.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\ojdbc6.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\mdsdt.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\mdsrt.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\netcfg.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\oamdsdt.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\share.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\uix2.jar" todir="${outputDir}\lib"/>
+	  <copy file="lib\xdo.zip" todir="${outputDir}\lib"/>
+	  <copy file="lib\xmlparserv2.jar" todir="${outputDir}\lib"/>
+    <copy file="lib\log4j-api-2.7.jar" todir="${outputDir}\lib"/>
+    <copy file="lib\log4j-core-2.7.jar" todir="${outputDir}\lib"/>
+    <copy file="lib\jna-4.2.2.jar" todir="${outputDir}\lib"/>
+    <copy file="lib\jna-platform-4.2.2.jar" todir="${outputDir}\lib"/>
+<!--	  
+	  <copy file="build_template\readme_output.txt" tofile="${outputDir}\output\readme.txt"/>
+	  <copy file="build_template\readme_log.txt" tofile="${outputDir}\log\readme.txt"/>
+-->	  
+	  <replace file="${outputDir}\flower.properties" token="@build.product@" value="${build.product}"/>
+	  <replace file="${outputDir}\flower.properties" token="@build.number@" value="${build.number}"/>
+	  <replace file="${outputDir}\flower.properties" token="@build.time@" value="${build.time}"/>
+	  <replace file="${outputDir}\flower.properties" token="@build.version@" value="${build.version}"/>
+	  <delete dir="${outputDir}\src"/>
+	  <delete dir="${outputDir}\classes"/>
+      <mkdir dir="${outputDir}\CLIENT"/>
+	  <copy file="CLIENT\client_files.txt"   tofile="${outputDir}\CLIENT\client_files.txt"/>
+  </target>
+
+<!--
+  <target name="clientFiles" depends="zip">
+    <mkdir dir="${outputDir}\CLIENT"/>
+    <copy todir="${outputDir}\CLIENT">
+      <fileset dir="CLIENT" casesensitive="false">
+        <include name="**/*.exe"/>  
+        <include name="**/*.dll"/>
+        <include name="**/*.lct"/>
+        <include name="**/*.msb"/>
+        <include name="**/*.nlb"/>
+        <include name="**/*.xml"/>
+        <include name="**/*.txt"/>        
+      </fileset>  
+    </copy>
+  </target>
+-->
+    <target name="buildEXE" depends="zip">
+      <delete file="launch4j.xml"/>
+      <delete file="FNDLOADER_client.iss"/>
+      <delete file="FNDLOADER.exe"/>
+
+      <copy file="build_template\launch4j.xml"         tofile="launch4j.xml"/>
+      <replace file="launch4j.xml" token="@build.number@" value="${build.number}"/>
+      <replace file="launch4j.xml" token="@build.version@" value="${build.version}"/>
+      <launch4j configFile="launch4j.xml" />
+
+      <copy file="FNDLOADER.exe" tofile="${outputDir}\FNDLOADER.exe" />
+
+<!--
+      <zip destfile="setup/11.5.0.zip" basedir="${outputDir}\CLIENT" includes="11.5.0/**/*" />
+      <zip destfile="setup/12.1.0.zip" basedir="${outputDir}\CLIENT" includes="12.1.0/**/*" />
+      <zip destfile="setup/12.2.0.zip" basedir="${outputDir}\CLIENT" includes="12.2.0/**/*" />
+-->
+      <copy file="build_template\FNDLOADER_client.iss" tofile="FNDLOADER_client.iss"/>
+      <replace file="FNDLOADER_client.iss" token="@build.number@" value="${build.number}"/>
+      <replace file="FNDLOADER_client.iss" token="@build.version@" value="${build.version}"/>
+      <exec executable="D:\WORK\InnoSetup5\ISCC.exe">
+          <arg value="FNDLOADER_client.iss"/>
+      </exec>
+     
+    </target>
+</project>
