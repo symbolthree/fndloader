@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" strict="true">
+	<Appenders>
+	  <Appender type="File" name="File" fileName="fndloader4.log">
+	    <Layout type="PatternLayout">
+	      <Pattern>%5p | %d{ISO8601} | %F | %L | %m%n</Pattern>
+	    </Layout>
+	  </Appender>
+  </Appenders>
+  <Loggers>
+    <Root level="debug">
+     <AppenderRef ref="File"/>
+    </Root>
+  </Loggers>
+</Configuration>
