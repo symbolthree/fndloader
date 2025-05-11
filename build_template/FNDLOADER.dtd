@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT FNDLOADER ((module+))>
+<!ELEMENT module ((object+))>
+<!ATTLIST module
+	name            CDATA #REQUIRED
+	description     CDATA #REQUIRED	
+	controlFilePath CDATA #REQUIRED
+>
+<!ELEMENT object ((key, controlFileName, tableName))>
+<!ATTLIST object
+	name        CDATA #REQUIRED
+	description CDATA #REQUIRED
+	translatable (Yes | No) #REQUIRED
+>
+<!ELEMENT key (#PCDATA)>
+<!ATTLIST key
+	description CDATA #REQUIRED
+>
+<!ELEMENT controlFileName (#PCDATA)>
+<!ELEMENT tableName (#PCDATA)>
+<!ATTLIST tableName
+	keyColumn        CDATA #REQUIRED
+	additionalColumn CDATA #IMPLIED	
+>
+
+
+

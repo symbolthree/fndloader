@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FNDLOADER SYSTEM "FNDLOADER.dtd">
+<!--
+=============================================
+Master file for FNDLOADER Definition
+
+$Header: /TOOL/FNDLOADER_V4/build_template/FNDLOADER.xml 1     11/14/16 1:30a Christopher Ho $
+
+Element Definition
+~~~~~~~~~~~~~~~~~~
+
+/FNDLOADER                = Root node
+
+//module/@name            = application short name (choice key in select module screen)
+//module/@description     = application name (choice description in select module screen)
+//module/@controlFilePath = location where the loader file can be found for this module
+
+//object/@name            = object short name (choice key in select object screen)
+//object/@description     = object name (choice description in select object screen)
+//object/@translatable    = Yes | No value which indicates whether this object has NLS translation
+
+//object/key              = key value as defined in the definition file for that object
+//object/key/@description = description of this key
+
+//object/tableName                   = database table or view which holds this object
+//object/tableName/@keyColumn        = table column mapped for the object and key (not necessarily the same (e.g. profile option)
+//object/tableName/@additionalColumn = Optional attribute. This column data is shown in filter object screen (e.g. Item Template)
+
+=============================================
+-->
+<FNDLOADER>
+	<module name="FND" description="Application Object Library" controlFilePath="${APPL_TOP}/fnd/${RELEASE_NAME}/patch/115/import">
+		<object name="VALUE_SET" description="Valueset" translatable="No">
+			<key description="Valueset Name">FLEX_VALUE_SET_NAME</key>
+			<controlFileName>afffload.lct</controlFileName>
+			<tableName keyColumn="FLEX_VALUE_SET_NAME">FND_FLEX_VALUE_SETS</tableName>
+		</object>
+<!--		
+		<object name="DESC_FLEX" description="Descriptive Flexfield" translatable="No">
+			<key description="DFF Name">DESCRIPTIVE_FLEXFIELD_NAME</key>
+			<controlFileName>afffload.lct</controlFileName>
+			<tableName keyColumn="DESCRIPTIVE_FLEXFIELD_NAME">FND_DESCRIPTIVE_FLEXS</tableName>
+		</object>
+		<object name="KEY_FLEX" description="Key Flexfield" translatable="No">
+			<key description="Flex Code ID">ID_FLEX_CODE</key>
+			<controlFileName>afffload.lct</controlFileName>
+			<tableName keyColumn="ID_FLEX_CODE">FND_ID_FLEXS</tableName>
+		</object>
+-->		
+		<object name="FND_LOOKUP_TYPE" description="Lookup Values" translatable="Yes">
+			<key description="Lookup Type">LOOKUP_TYPE</key>
+			<controlFileName>aflvmlu.lct</controlFileName>
+			<tableName keyColumn="LOOKUP_TYPE" additionalColumn="MEANING">FND_LOOKUP_TYPES_VL</tableName>
+		</object>
+		<object name="FND_NEW_MESSAGES" description="Messages" translatable="Yes">
+			<key description="Message Name">MESSAGE_NAME</key>
+			<controlFileName>afmdmsg.lct</controlFileName>
+			<tableName keyColumn="MESSAGE_NAME">FND_NEW_MESSAGES</tableName>
+		</object>
+		<object name="PROGRAM" description="Concurrent Program" translatable="Yes">
+			<key description="Concurrent Program name">CONCURRENT_PROGRAM_NAME</key>
+			<controlFileName>afcpprog.lct</controlFileName>
+			<tableName keyColumn="CONCURRENT_PROGRAM_NAME" additionalColumn="USER_CONCURRENT_PROGRAM_NAME">FND_CONCURRENT_PROGRAMS_VL</tableName>
+		</object>
+		<object name="REQ_SET" description="Request Set" translatable="Yes">
+			<key description="Request Set Name">REQUEST_SET_NAME</key>
+			<controlFileName>afcprset.lct</controlFileName>
+			<tableName keyColumn="REQUEST_SET_NAME">FND_REQUEST_SETS</tableName>
+		</object>
+		<object name="REQ_SET_LINKS" description="Request Set Links" translatable="No">
+			<key description="Request Set Name">REQUEST_SET_NAME</key>
+			<controlFileName>afcprset.lct</controlFileName>
+			<tableName keyColumn="REQUEST_SET_NAME">FND_REQUEST_SETS</tableName>
+		</object>
+		<object name="FND_RESPONSIBILITY" description="Responsibility" translatable="Yes">
+			<key description="Responsibility Key">RESP_KEY</key>
+			<controlFileName>afscursp.lct</controlFileName>
+			<tableName keyColumn="RESPONSIBILITY_KEY" additionalColumn="RESPONSIBILITY_NAME">FND_RESPONSIBILITY_VL</tableName>
+		</object>
+		<object name="PROFILE" description="Profile Option" translatable="Yes">
+			<key description="Profile Option Name">PROFILE_NAME</key>
+			<controlFileName>afscprof.lct</controlFileName>
+			<tableName keyColumn="PROFILE_OPTION_NAME" additionalColumn="USER_PROFILE_OPTION_NAME">FND_PROFILE_OPTIONS_VL</tableName>
+		</object>
+		<object name="MENU" description="Menu" translatable="Yes">
+			<key description="Menu Name">MENU_NAME</key>
+			<controlFileName>afsload.lct</controlFileName>
+			<tableName keyColumn="MENU_NAME" additionalColumn="USER_MENU_NAME">FND_MENUS_VL</tableName>
+		</object>
+		<object name="FUNCTION" description="Function" translatable="Yes">
+			<key description="Function Name">FUNCTION_NAME</key>
+			<controlFileName>afsload.lct</controlFileName>
+			<tableName keyColumn="FUNCTION_NAME" additionalColumn="USER_FUNCTION_NAME">FND_FORM_FUNCTIONS_VL</tableName>
+		</object>		
+		<object name="FND_USER" description="User" translatable="No">
+			<key description="User Name">USER_NAME</key>
+			<controlFileName>afscursp.lct</controlFileName>
+			<tableName keyColumn="USER_NAME">FND_USER</tableName>
+		</object>
+		<object name="REQUEST_GROUP" description="Request Group" translatable="Yes">
+			<key description="Request Group Name">REQUEST_GROUP_NAME</key>
+			<controlFileName>afcpreqg.lct</controlFileName>
+			<tableName keyColumn="REQUEST_GROUP_NAME">FND_REQUEST_GROUPS</tableName>
+		</object>
+		<object name="FND_FORM_CUSTOM_RULES" description="Form Personalization" translatable="No">
+			<key description="Form Name">FUNCTION_NAME</key>
+			<controlFileName>affrmcus.lct</controlFileName>
+			<tableName keyColumn="FUNCTION_NAME">FND_FORM_CUSTOM_RULES</tableName>
+		</object>
+	</module>
+	<module name="XDO" description="XML Publisher" controlFilePath="${APPL_TOP}/xdo/${RELEASE_NAME}/patch/115/import">
+		<object name="XDO_DS_DEFINITIONS" description="XDO DataSource and Template" translatable="No">
+			<key description="Data Source">DATA_SOURCE_CODE</key>
+			<controlFileName>xdotmpl.lct</controlFileName>
+			<tableName keyColumn="DATA_SOURCE_CODE" additionalColumn="DATA_SOURCE_NAME">XDO_DS_DEFINITIONS_VL</tableName>
+		</object>
+	</module>
+	<module name="BNE" description="Desktop Manager" controlFilePath="${APPL_TOP}/bne/${RELEASE_NAME}/patch/115/import">
+		<object name="BNE_INTEGRATORS" description="Desktop Integrator" translatable="Yes">
+			<key description="Integrator">BNE_INTEGRATORS</key>
+			<controlFileName>bneintegrator.lct</controlFileName>
+			<tableName keyColumn="INTEGRATOR_CODE" additionalColumn="USER_NAME">BNE_INTEGRATORS_VL</tableName>
+		</object>
+	</module>	
+	<module name="ALR" description="Desktop Manager" controlFilePath="${APPL_TOP}/alr/${RELEASE_NAME}/patch/115/import">
+		<object name="ALR_ALERTS" description="Alert" translatable="No">
+			<key description="Alert">ALR_ALERTS</key>
+			<controlFileName>alr.lct</controlFileName>
+			<tableName keyColumn="ALERT_NAME">ALR_ALERTS</tableName>
+		</object>
+	</module>	
+<!--			
+	<module name="HXC" description="Time and Labor Engine" controlFilePath="${APPL_TOP}/hxc/${RELEASE_NAME}/patch/115/import">
+		<object name="HXC_LAYOUTS" description="Timecard Layout" translatable="Yes">
+			<key description="Layout Name">LAYOUT_NAME</key>
+			<controlFileName>hxclaytlayoutsld.lct</controlFileName>
+			<tableName keyColumn="LAYOUT_NAME">HXC_LAYOUTS</tableName>
+		</object>
+	</module>
+	<module name="GL" description="General Ledger" controlFilePath="${APPL_TOP}/gl/${RELEASE_NAME}/patch/115/import">
+		<object name="GL_ACC_CALENDAR" description="GL Accounting Calendar" translatable="No">
+			<key description="Period Set Name">PERIOD_SET_NAME</key>
+			<controlFileName>glnlsacc.lct</controlFileName>
+			<tableName keyColumn="PERIOD_SET_NAME">GL_PERIOD_SETS</tableName>
+		</object>
+	</module>
+	<module name="INV" description="Inventory" controlFilePath="${APPL_TOP}/inv/${RELEASE_NAME}/patch/115/import">
+		<object name="MTL_ITEM_TEMPLATES" description="Item template" translatable="No">
+			<key description="Template ID">TEMPLATE_ID</key>
+			<controlFileName>invitmpl.lct</controlFileName>
+			<tableName keyColumn="TEMPLATE_ID" additionalColumn="TEMPLATE_NAME">MTL_ITEM_TEMPLATES</tableName>
+		</object>
+	</module>
+-->	
+</FNDLOADER>

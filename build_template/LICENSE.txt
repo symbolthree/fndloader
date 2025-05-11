@@ -1,0 +1,51 @@
+﻿=================
+License Agreement
+=================
+
+FNDLOADER V4
+
+Copyright (c) 2016 Christopher Ho @ symbolthree.com
+
+All rights reserved.
+
+FNDLOADER is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+=================================
+License for Oracle-related files
+=================================
+
+- fndext.zip, 
+  ojdbc6.jar, 
+  netcfg.jar,
+  mdsdt.jar,
+  mdsrt.jar,
+  oamdsdt.jar,
+  share.jar,
+  uix2.jar,
+  xdo.zip,
+  xmlparserv2.jar
+  javatools-nodeps.jar
+
+- Oracle EBS 11i/R12 FND binaries
+  Oracle database 8.0.6 libraries 
+  Oracle database 10.1.3 libraries 
+  Oracle 11i/R12 lct files (FNDLOADER standalone)
+
+You/Your company must obtain a valid license for Oracle EBS 11i or R12.
+The aforementioned files are pre-packaged in this software and is for your
+convenience to use this program. These files should be deleted immediately
+if you/your company does not have the right granted from Oracle to use 
+these files.  The writer of FNDLOADER shall not bear any responsibility
+for the copyright violation of the aforementioned files.

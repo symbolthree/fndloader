@@ -1,0 +1,156 @@
+FNDLOADER 4
+
+Copyright (C) 2009-2017  Christopher.Ho@symbolthree.com 
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+  
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+========================================
+README for FNDLOADER 4.2
+========================================
+- Install the setup executable. For 64-bit Windows, DO NOT INSTALL on a 
+  directory contains parenthesis e.g. C:\Program Files (x86) (Oracle client bug).
+
+- Copy tnsnames.ora to the root of the installed directory; or
+  set a system variable TNS_ADMIN to point to your tnsnames.ora; or
+  set a system variable ORACLE_HOME and tnsnames.ora should be located 
+  in $ORACLE_HOME/network/admin directory.
+
+
+=====================
+Changes in v4.2
+=====================
+- Add WebADI (BNE) config file
+- Bug Fix of client mode which has pre-defined FND_TOP variable
+- Bug Fix of checking config file version in server
+
+=====================
+Changes in v4.1
+=====================
+- Complete help file in Windows CHM format (and online HTML format)
+- Bug fix of XLIFF export exits abruptly
+- Bug fix of FNDLOAD NLS LCT/LDT version check issue
+
+=====================
+Changes in v4.0
+=====================
+[Windows Standalone]
+- Only Windows standalone version is maintained. Linux and Server versions are obseleted.
+- Compatible with Oracle EBS 11i, R12.1 and R12.2
+- Check versions of configuration (lct) file in local, server and ldt file. Give warning if version 
+  difference and opt-out option.
+- Rename OA Framework customization to personalization
+
+- All Java packages changed from com.symplik to com.symbolthree
+- Use Log4Jv2 for logging
+- Use jna for Windows Registry operations
+
+[Calla Framework] 
+- Costmetic changes
+- Add online help file
+
+
+=====================
+Changes in v3.1
+=====================
+[All Editions]
+- Add compatiblity to 32 and 64 bit Java Runtimes
+- Add compatiblity to 32 and 64 bit Windows environments
+- Update R12.1 FNDLOAD program and FND definition files to latest build (as of 1-JUN-2015)
+- Fix FNDLOAD upload bug by adding parameter CUSTOM=FORCE
+
+[Calla Framework]
+- Add "flower.exit.confirm" to control whether showing prompt when program exit
+
+=====================
+Changes in v3.0
+=====================
+[All Editions]
+- Add options to export/import Workflow Defintion
+- Add options to export/import XML Publisher Objects
+- Add options to export/import OA Framework pages, personalization, and translation from MDS repository.
+
+[Calla Framework]
+- Add new parameters "flower.choice.size" and "flower.choice.max" to control pagination and max. number of multiple choices.
+- Add maxTextInputLength and minTextInputLength methods in abstract class Question
+
+=====================
+Changes in v2.4
+=====================
+[All Editions]
+- Add: Support Java 7 and Windows 8
+- Add: function to download/upload Workflow Definition
+- Add: Redirect all log files to log directory
+- Change: Reduce the loadable objects to FND-related objects only. Skip the DownloadModule screen since FND is the only choice.
+- Fix: NullPointerException bug if download directory is invalid
+- Fix: incorrect TNS names used if FNDLOAD has been run multiple times
+
+=====================
+Changes in v2.3
+=====================
+[All Editions]
+- Objects are grouped by modules and a new module selection screen is added in Download mode
+- Integrate with CALLA 1.0 which gives better navigation flow and bug fixes
+- Add additionalColumn attribute in FNDLOADER.xml to shown non-key column in ShowFilterResult screen
+- In ShowFilterResult screen users can select a particular object to download (Suggested by Vicky C.)
+- Fix NLS download/Upload for R12
+
+=====================
+Changes in v2.2
+=====================
+[Stand-alone & Server addon]
+- Add options to download and upload NLS translation. These options are 
+  shown only when the selected instance has NLS patches applied.
+
+=====================
+Changes in v2.1
+=====================
+[Stand-alone]
+- Change directory structure to separate 11i and R12 files
+- Use version-specific FNDLOAD and Oracle binaries
+
+[Stand-alone & Server addon]
+- instance info is stored in INSTANCE.XML, taking away from FNDLOADER.XML
+
+[CALLA Engine]
+- Question and Choices are able to be displayed in different colors (GUI)
+- Recording mode, Silent operation, and custom Ant Task
+
+=====================
+Changes in v2.0
+=====================
+- JRE 1.5 or higher is required.
+- Using SYMPLiK CALLA engine for interactive wizard in console and GUI
+- Rework on all the questions to use the new engine
+- Standalone version does not depend on any pre-installed Oracle program
+- Use tnsnames.ora for database instance lookup
+
+=====================
+Changes in v1.1
+=====================
+- combined JDOM and JAXEN file into one jar; add commons-exec-1.0.jar
+- bug fix: password not saving in encrypted format properly
+
+=====================
+Changes in v1.02
+=====================
+- Security Enhancements: APPS password in the config file will be encrypted after successful login. 
+  If the password is incorrect (e.g. you transfer the config files from one instance to another), 
+  you will be asked to enter it with a masked echo showing in the console. The program will exit 
+  if the password is entered incorrectly for three times.
+
+=====================
+Changes in v1.01
+=====================
+- Initial release

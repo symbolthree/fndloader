@@ -1,0 +1,76 @@
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar></jar>
+  <outfile>D:\WORK\FNDLOADER4\FNDLOADER.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine>-display GUI</cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>D:\WORK\FNDLOADER4\build_template\FNDLOADER.ico</icon>
+  <singleInstance>
+    <mutexName>FNDLOADER</mutexName>
+    <windowTitle>FNDLOADER</windowTitle>
+  </singleInstance>
+  <classPath>
+    <mainClass>symbolthree.flower.CALLA</mainClass>
+    <cp>.\classes</cp>
+    <cp>.\lib\FNDLOADER-@build.version@.jar</cp>
+    <cp>.\lib\CALLA-1.3.jar</cp>
+    <cp>.\lib\log4j-api-2.7.jar</cp>
+    <cp>.\lib\log4j-core-2.7.jar</cp>
+    <cp>.\lib\jna-4.2.2.jar</cp>
+    <cp>.\lib\jna-platform-4.2.2.jar</cp>
+    <cp>.\lib\jaxen-1.1.6.jar</cp>
+    <cp>.\lib\jdom-2.0.6.jar</cp>
+    <cp>.\lib\commons-io-2.5.jar</cp>
+    <cp>.\lib\collections.zip</cp>
+    <cp>.\lib\fndext.jar</cp>
+    <cp>.\lib\netcfg.jar</cp>
+    <cp>.\lib\ojdbc6.jar</cp>
+    <cp>.\lib\share.jar</cp>
+    <cp>.\lib\uix2.jar</cp>
+    <cp>.\lib\xmlparserv2.jar</cp>
+    <cp>.\lib\oamdsdt.jar</cp>
+    <cp>.\lib\mdsrt.jar</cp>
+    <cp>.\lib\mdsdt.jar</cp>
+    <cp>.\lib\xdo.zip</cp>
+  </classPath>
+  <jre>
+    <path></path>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion>1.11.0</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <opt>-DlogPath=%USERPROFILE%/symbolthree/fndloader/log</opt>
+    <opt>-Dlog4j.configurationFile=lib/log4j2.xml</opt>
+   </jre>
+  <splash>
+    <file>D:\WORK\FNDLOADER4\build_template\splash.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  <versionInfo>
+    <fileVersion>@build.version@.@build.number@.0</fileVersion>
+    <txtFileVersion>@build.version@ build @build.number@</txtFileVersion>
+    <fileDescription>FNDLOADER</fileDescription>
+    <copyright>Christopher Ho / smybolthree.com @2016</copyright>
+    <productVersion>@build.version@.@build.number@.0</productVersion>
+    <txtProductVersion>@build.version@ build @build.number@</txtProductVersion>
+    <productName>FNDLOADER</productName>
+    <companyName>symbolthree.com</companyName>
+    <internalName>FNDLOADER</internalName>
+    <originalFilename>FNDLOADER.exe</originalFilename>
+  </versionInfo>
+  <messages>
+    <startupErr>An error occurred while starting the application.</startupErr>
+    <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
+    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
+    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>
